@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PowerMoney
 
-## Getting Started
+An informational Next.js website for researching and comparing stocks,
+mutual funds, loans, insurance and investment plans. The site does **not**
+process payments or transactions anywhere — every product page routes
+interested visitors to a lead/enquiry form instead.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 (App Router, TypeScript, Turbopack)
+- Tailwind CSS v4
+- Framer Motion (hero/section animations)
+- Recharts (price charts, sparklines, allocation pie charts)
+- React Hook Form + Zod (form validation)
+- Resend (transactional email for lead/contact forms)
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Enquiry forms & email
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Every "Apply Now" / "Get a Callback" / "Contact Us" form posts to
+`/api/lead`, which emails the submission via [Resend](https://resend.com).
+Copy `.env.example` to `.env.local` and fill in:
 
-## Learn More
+- `RESEND_API_KEY` — from your Resend account
+- `LEAD_NOTIFICATION_EMAIL` — inbox that should receive enquiries
+- `LEAD_FROM_EMAIL` — must be on a domain verified in Resend (the
+  sandbox `onboarding@resend.dev` address works for testing only)
 
-To learn more about Next.js, take a look at the following resources:
+Without these set, submissions are still validated and accepted, but
+no email is sent (a warning is logged instead) — useful for local
+development without a Resend account.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Content
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+All product data (stocks, mutual funds, loans, insurance, investment
+plans, articles) is mock/illustrative data in `src/data/`. Swap these
+with real data sources before launch, and update the disclaimers in
+`src/app/legal/` with copy reviewed by legal/compliance counsel.
 
-## Deploy on Vercel
+## Branding
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The brand mark is extracted from the client-supplied logo artwork:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `public/logo-icon.png` — icon only, transparent background (used in
+  the header/footer via `src/components/logo.tsx`)
+- `public/logo-full.png` — full lockup (icon + wordmark + tagline),
+  transparent background, dark tagline text (use on light surfaces)
+- `public/logo-full-dark.png` — same full lockup with the tagline
+  recolored white (use on dark surfaces)
+- `src/app/icon.png` / `src/app/apple-icon.png` — favicon and iOS
+  home-screen icon, cropped from the same source
+
+If the client provides a fresh export of the logo (e.g. a vector SVG)
+later, regenerate these from that file instead for the cleanest edges.
+
+## Deploy
+
+Deploy like any Next.js app (e.g. on [Vercel](https://vercel.com/new)).
+Remember to set the environment variables above in your hosting
+provider's dashboard.
