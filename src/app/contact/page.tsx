@@ -15,7 +15,7 @@ const interestOptions = [
   "General Enquiry",
   "Stocks",
   "Mutual Funds",
-  "Investment Plans",
+  "Our Plans",
   "Loans",
   "Insurance",
 ];

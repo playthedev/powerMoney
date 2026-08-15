@@ -11,6 +11,8 @@ const badgeVariants = cva(
         growth: "bg-growth-light text-growth-dark",
         accent: "bg-accent-light text-accent-dark",
         danger: "bg-danger-light text-danger",
+        violet: "bg-violet-light text-violet-dark",
+        navy: "bg-navy text-white",
         neutral: "bg-surface-alt text-foreground/70",
       },
     },

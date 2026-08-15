@@ -29,9 +29,9 @@ export const productLinks: NavLink[] = [
     icon: PiggyBank,
   },
   {
-    label: "Investment Plans",
+    label: "Our Plans",
     href: "/investment-plans",
-    description: "Guided advisory portfolios for every goal",
+    description: "Fixed 12/24/36-month plans with guaranteed monthly returns",
     icon: Wallet,
   },
   {
@@ -64,6 +64,7 @@ export const footerNav = {
   Products: productLinks.map((l) => ({ label: l.label, href: l.href })),
   Company: [
     { label: "About Us", href: "/about" },
+    { label: "Gift a Tree", href: "/gift-a-tree" },
     { label: "Learn Hub", href: "/learn" },
     { label: "Contact Us", href: "/contact" },
     { label: "Careers", href: "/about#careers" },

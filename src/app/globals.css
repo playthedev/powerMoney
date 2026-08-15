@@ -24,6 +24,10 @@
   --color-danger: #d93025;
   --color-danger-light: #fce8e6;
 
+  --color-violet: #6c4bd6;
+  --color-violet-dark: #4f34a8;
+  --color-violet-light: #ede8fb;
+
   --border-subtle: #e3e8f0;
 }
 
@@ -50,6 +54,10 @@
 
   --color-danger: var(--color-danger);
   --color-danger-light: var(--color-danger-light);
+
+  --color-violet: var(--color-violet);
+  --color-violet-dark: var(--color-violet-dark);
+  --color-violet-light: var(--color-violet-light);
 
   --color-border-subtle: var(--border-subtle);
 
