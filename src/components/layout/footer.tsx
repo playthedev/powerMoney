@@ -76,6 +76,20 @@ export function Footer() {
             risks. Read all scheme-related documents carefully.
           </p>
         </div>
+
+        <div className="mt-4 border-t border-white/10 pt-4 text-xs text-white/40">
+          <p>
+            This site is built by{" "}
+            <a
+              href="https://www.nexmogen.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-white/60 underline underline-offset-2 transition-colors hover:text-white"
+            >
+              Nexmogen
+            </a>
+          </p>
+        </div>
       </Container>
     </footer>
   );
