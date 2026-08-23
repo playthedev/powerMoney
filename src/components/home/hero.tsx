@@ -1,11 +1,18 @@
 "use client";
 
-import { motion } from "framer-motion";
+import * as React from "react";
+import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, CheckCircle2, HeartHandshake, IndianRupee, Landmark, ShieldCheck, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
-import { themeClasses, plans } from "@/data/plans";
 import { cn } from "@/lib/utils";
+
+const bannerSlides = [
+  { src: "/hero-banner-1.jpg", alt: "Indian rupee currency notes" },
+  { src: "/hero-banner-2.jpg", alt: "Stacked gold coins" },
+  { src: "/hero-banner-3.jpg", alt: "Gold coins closeup" },
+];
 
 const trustIcons = [
   {
@@ -39,6 +46,15 @@ const trustIcons = [
 ];
 
 export function Hero() {
+  const [slide, setSlide] = React.useState(0);
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setSlide((s) => (s + 1) % bannerSlides.length);
+    }, 4500);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="relative overflow-hidden bg-white pb-20 pt-14 sm:pb-28 sm:pt-20">
       <div
@@ -110,32 +126,44 @@ export function Hero() {
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
             className="relative"
           >
-            <div className="rounded-3xl border border-border-subtle bg-gradient-to-br from-brand-light via-white to-growth-light p-6 pb-8 shadow-2xl shadow-slate-900/10 sm:pb-28">
-              <div className="flex items-center justify-between">
-                <p className="text-sm font-semibold text-navy/70">Hamare Plans</p>
-                <span className="rounded-full bg-growth/15 px-2.5 py-1 text-xs font-semibold text-growth-dark">
-                  Guaranteed*
-                </span>
-              </div>
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-2xl shadow-slate-900/20">
+              <AnimatePresence>
+                <motion.div
+                  key={slide}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 1 }}
+                  className="absolute inset-0"
+                >
+                  <Image
+                    src={bannerSlides[slide].src}
+                    alt={bannerSlides[slide].alt}
+                    fill
+                    priority={slide === 0}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    className="object-cover"
+                  />
+                </motion.div>
+              </AnimatePresence>
 
-              <div className="mt-5 space-y-3">
-                {plans.map((plan) => {
-                  const theme = themeClasses[plan.theme];
-                  return (
-                    <div
-                      key={plan.slug}
-                      className="flex items-center justify-between rounded-xl bg-white/70 px-4 py-3.5"
-                    >
-                      <div>
-                        <p className="text-sm font-medium text-navy">{plan.name}</p>
-                        <p className="text-xs text-foreground/45">{plan.monthlyProfit}% every month</p>
-                      </div>
-                      <p className={cn("font-display text-xl font-bold", theme.text)}>
-                        {plan.yearlyProfit}%
-                      </p>
-                    </div>
-                  );
-                })}
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/10 to-transparent" />
+              <span className="absolute right-4 top-4 rounded-full bg-white/90 px-3 py-1.5 text-xs font-semibold text-growth-dark backdrop-blur">
+                Guaranteed Returns*
+              </span>
+
+              <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2">
+                {bannerSlides.map((s, i) => (
+                  <button
+                    key={s.src}
+                    aria-label={`Show slide ${i + 1}`}
+                    onClick={() => setSlide(i)}
+                    className={cn(
+                      "h-1.5 rounded-full transition-all",
+                      i === slide ? "w-6 bg-white" : "w-1.5 bg-white/50 hover:bg-white/75"
+                    )}
+                  />
+                ))}
               </div>
             </div>
 
