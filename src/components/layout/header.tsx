@@ -20,6 +20,7 @@ function HeaderNav({ pathname }: { pathname: string }) {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border-subtle bg-white/90 backdrop-blur-md">
+      <div className="h-1 w-full bg-gradient-to-r from-danger via-accent to-growth" />
       <Container className="flex h-18 items-center justify-between py-3.5">
         <Link href="/" className="shrink-0">
           <Logo />
@@ -49,7 +50,7 @@ function HeaderNav({ pathname }: { pathname: string }) {
             className="flex items-center gap-1.5 text-sm font-medium text-foreground/70 hover:text-navy"
           >
             <Phone className="h-4 w-4" />
-            9999880667
+            1800-123-456
           </a>
           <Button href="/contact" size="sm">
             Get a Callback

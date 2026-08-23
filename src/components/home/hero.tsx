@@ -58,10 +58,10 @@ export function Hero() {
   return (
     <section className="relative overflow-hidden bg-white pb-20 pt-14 sm:pb-28 sm:pt-20">
       <div
-        className="pointer-events-none absolute inset-0 opacity-70"
+        className="pointer-events-none absolute inset-0 opacity-90"
         style={{
           background:
-            "radial-gradient(55% 45% at 15% 0%, rgba(26,115,232,0.08), transparent), radial-gradient(45% 40% at 90% 15%, rgba(23,138,76,0.1), transparent)",
+            "radial-gradient(50% 45% at 12% 5%, rgba(26,115,232,0.14), transparent), radial-gradient(45% 40% at 92% 12%, rgba(23,138,76,0.16), transparent), radial-gradient(40% 35% at 55% 95%, rgba(242,183,5,0.12), transparent)",
         }}
       />
 

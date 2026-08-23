@@ -13,6 +13,7 @@ import {
 export function Footer() {
   return (
     <footer className="bg-navy text-white">
+      <div className="h-1 w-full bg-gradient-to-r from-danger via-accent to-growth" />
       <Container className="py-16">
         <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:grid-cols-5">
           <div className="col-span-2 sm:col-span-3 lg:col-span-2">

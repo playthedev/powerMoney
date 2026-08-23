@@ -1,32 +1,48 @@
 import { Clock3, Eye, Landmark, Leaf, ShieldCheck } from "lucide-react";
 import { Container } from "@/components/ui/container";
+import { cn } from "@/lib/utils";
 
 const points = [
   {
     icon: Clock3,
     title: "On-Time Monthly Transfer",
     description: "Profit hits your bank account the same day, every single month.",
+    bg: "bg-brand/15",
+    text: "text-brand",
   },
   {
     icon: Eye,
     title: "100% Transparent Process",
     description: "Clear terms and monthly statements — track every rupee you've invested.",
+    bg: "bg-accent/15",
+    text: "text-accent",
   },
   {
     icon: ShieldCheck,
     title: "Koi Hidden Charges Nahi",
     description: "What we quote is what you get. No fine print, no surprise deductions.",
+    bg: "bg-danger/15",
+    text: "text-danger",
   },
   {
     icon: Landmark,
     title: "Aapka Paisa, Aapka Adhikar",
     description: "Withdraw as per your plan's terms — your money stays your decision.",
+    bg: "bg-growth/15",
+    text: "text-growth",
   },
 ];
 
 export function HowItWorks() {
   return (
     <section id="how-it-works" className="scroll-mt-20 relative overflow-hidden bg-navy py-20 sm:py-28">
+      <div
+        className="pointer-events-none absolute inset-0 opacity-60"
+        style={{
+          background:
+            "radial-gradient(45% 40% at 90% 0%, rgba(23,138,76,0.25), transparent), radial-gradient(40% 35% at 0% 100%, rgba(26,115,232,0.22), transparent), radial-gradient(30% 30% at 60% 40%, rgba(242,183,5,0.12), transparent)",
+        }}
+      />
       <Landmark className="pointer-events-none absolute -right-16 top-1/2 h-[26rem] w-[26rem] -translate-y-1/2 text-white/[0.03]" />
 
       <Container className="relative">
@@ -66,7 +82,7 @@ export function HowItWorks() {
                 key={point.title}
                 className="rounded-2xl border border-white/10 bg-white/[0.03] p-6"
               >
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/10 text-growth">
+                <span className={cn("flex h-11 w-11 items-center justify-center rounded-xl", point.bg, point.text)}>
                   <point.icon className="h-5 w-5" />
                 </span>
                 <h3 className="mt-4 text-sm font-bold text-white">{point.title}</h3>

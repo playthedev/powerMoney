@@ -4,7 +4,10 @@ import { plans } from "@/data/plans";
 
 export function PlansSection() {
   return (
-    <section id="plans" className="scroll-mt-20 bg-surface py-20 sm:py-28">
+    <section
+      id="plans"
+      className="scroll-mt-20 bg-gradient-to-b from-surface via-white to-surface py-20 sm:py-28"
+    >
       <Container>
         <div className="mx-auto max-w-2xl text-center">
           <span className="h-px w-16 bg-border-subtle" />

@@ -6,9 +6,16 @@ export function HelpCtaBar() {
   return (
     <section className="pb-20 sm:pb-28">
       <Container>
-        <div className="flex flex-col gap-8 rounded-3xl bg-navy px-8 py-10 sm:px-10 lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex items-center gap-4">
-            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/10 text-growth">
+        <div className="relative flex flex-col gap-8 overflow-hidden rounded-3xl bg-gradient-to-br from-navy via-navy to-brand-dark/70 px-8 py-10 sm:px-10 lg:flex-row lg:items-center lg:justify-between">
+          <div
+            className="pointer-events-none absolute inset-0 opacity-70"
+            style={{
+              background:
+                "radial-gradient(35% 60% at 100% 0%, rgba(23,138,76,0.3), transparent), radial-gradient(30% 50% at 0% 100%, rgba(242,183,5,0.15), transparent)",
+            }}
+          />
+          <div className="relative flex items-center gap-4">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/20 text-accent">
               <Headset className="h-6 w-6" />
             </span>
             <div>
@@ -19,7 +26,7 @@ export function HelpCtaBar() {
             </div>
           </div>
 
-          <div className="flex flex-col items-center gap-3 rounded-2xl bg-growth px-6 py-5 text-center lg:flex-1 lg:mx-4">
+          <div className="relative flex flex-col items-center gap-3 rounded-2xl bg-gradient-to-br from-growth to-growth-dark px-6 py-5 text-center shadow-lg shadow-growth/20 lg:flex-1 lg:mx-4">
             <p className="font-display text-lg font-bold text-white">
               Aaj Hi Investment Shuru Karein
             </p>
@@ -29,7 +36,7 @@ export function HelpCtaBar() {
             </Button>
           </div>
 
-          <div className="flex flex-col gap-2.5 text-sm text-white/70">
+          <div className="relative flex flex-col gap-2.5 text-sm text-white/70">
             <a href="tel:+911800123456" className="flex items-center gap-2.5 hover:text-white">
               <Phone className="h-4 w-4 shrink-0 text-growth" />
               1800-123-456
