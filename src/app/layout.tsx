@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s | PowerMoney",
   },
   description:
-    "Research and compare stocks, mutual funds, loans and insurance in one place, built for Indian investors.",
+    "Fixed-tenure investment plans with guaranteed monthly returns, transferred directly to your bank account — built for Indian investors.",
 };
 
 export default function RootLayout({

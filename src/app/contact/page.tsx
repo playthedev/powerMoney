@@ -4,20 +4,18 @@ import { PageHero } from "@/components/page-hero";
 import { Container } from "@/components/ui/container";
 import { Card } from "@/components/ui/card";
 import { LeadForm } from "@/components/forms/lead-form";
+import { plans } from "@/data/plans";
 
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Get in touch with the PowerMoney team for questions about stocks, mutual funds, loans or insurance.",
+    "Get in touch with the PowerMoney team for questions about our investment plans.",
 };
 
 const interestOptions = [
   "General Enquiry",
-  "Stocks",
-  "Mutual Funds",
-  "Our Plans",
-  "Loans",
-  "Insurance",
+  ...plans.map((p) => p.name),
+  "Gift a Tree",
 ];
 
 export default function ContactPage() {

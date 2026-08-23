@@ -1,26 +1,51 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Search, ShieldCheck, Wallet } from "lucide-react";
+import { ArrowRight, CheckCircle2, HeartHandshake, IndianRupee, Landmark, ShieldCheck, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
+import { themeClasses, plans } from "@/data/plans";
+import { cn } from "@/lib/utils";
+
+const trustIcons = [
+  {
+    icon: ShieldCheck,
+    title: "100% Safe",
+    subtitle: "Aapka Paisa Pura Surakshit",
+    bg: "bg-brand-light",
+    text: "text-brand",
+  },
+  {
+    icon: HeartHandshake,
+    title: "100% Trusted",
+    subtitle: "Bharosa Hamara Vada Pakka",
+    bg: "bg-danger-light",
+    text: "text-danger",
+  },
+  {
+    icon: IndianRupee,
+    title: "Monthly Profit",
+    subtitle: "Har Mahine Profit Aapke Account Mein",
+    bg: "bg-accent-light",
+    text: "text-accent-dark",
+  },
+  {
+    icon: TrendingUp,
+    title: "Big Returns",
+    subtitle: "Smart Plans, Bada Fayda",
+    bg: "bg-growth-light",
+    text: "text-growth-dark",
+  },
+];
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-navy pb-28 pt-16 sm:pb-36 sm:pt-20">
+    <section className="relative overflow-hidden bg-white pb-20 pt-14 sm:pb-28 sm:pt-20">
       <div
-        className="pointer-events-none absolute inset-0 opacity-40"
+        className="pointer-events-none absolute inset-0 opacity-70"
         style={{
           background:
-            "radial-gradient(60% 50% at 20% 10%, rgba(26,115,232,0.35), transparent), radial-gradient(50% 40% at 85% 30%, rgba(23,138,76,0.3), transparent)",
-        }}
-      />
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.07]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
+            "radial-gradient(55% 45% at 15% 0%, rgba(26,115,232,0.08), transparent), radial-gradient(45% 40% at 90% 15%, rgba(23,138,76,0.1), transparent)",
         }}
       />
 
@@ -31,41 +56,51 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold text-white/80 ring-1 ring-white/15">
+            <span className="inline-flex items-center gap-2 rounded-full bg-growth-light px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-growth-dark">
               <span className="h-1.5 w-1.5 rounded-full bg-growth" />
-              Trusted by 12L+ Indians to research their money
+              Smart Investment, Secure Future
             </span>
 
-            <h1 className="mt-6 font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.4rem]">
-              Every rupee decision,
+            <h1 className="mt-6 font-display text-4xl font-extrabold leading-[1.1] tracking-tight text-navy sm:text-5xl lg:text-[3.2rem]">
+              Aaj Invest Karein,
               <br />
-              <span className="bg-gradient-to-r from-brand via-sky-300 to-growth bg-clip-text text-transparent">
-                made with clarity.
-              </span>
+              <span className="text-growth">Kal Secure Future Payein</span>
             </h1>
 
-            <p className="mt-6 max-w-lg text-base leading-relaxed text-white/60 sm:text-lg">
-              Research stocks and mutual funds, compare loans and insurance,
-              and plan your goals with calculators built for Indian investors.
+            <p className="mt-5 text-base font-semibold text-brand sm:text-lg">
+              — Kam Invest Karo, Zyada Profit Pao! —
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button href="/stocks" size="lg" variant="growth">
-                Explore Markets
-                <ArrowRight className="h-4 w-4" />
-              </Button>
-              <Button href="/contact" size="lg" variant="inverse">
-                Talk to an Advisor
-              </Button>
+            <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-4">
+              {trustIcons.map((item) => (
+                <div key={item.title} className="flex flex-col items-start gap-2.5">
+                  <span
+                    className={cn(
+                      "flex h-11 w-11 items-center justify-center rounded-xl",
+                      item.bg,
+                      item.text
+                    )}
+                  >
+                    <item.icon className="h-5 w-5" />
+                  </span>
+                  <div>
+                    <p className="text-sm font-bold text-navy">{item.title}</p>
+                    <p className="mt-0.5 text-xs leading-snug text-foreground/50">
+                      {item.subtitle}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
 
-            <div className="mt-10 hidden max-w-lg items-center gap-2 rounded-2xl border border-white/15 bg-white/5 p-2 pl-4 backdrop-blur sm:flex">
-              <Search className="h-4 w-4 shrink-0 text-white/40" />
-              <input
-                placeholder="Search stocks, mutual funds, loans…"
-                className="h-11 w-full bg-transparent text-sm text-white placeholder:text-white/35 focus:outline-none"
-              />
-              <Button size="sm">Search</Button>
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <Button href="/contact" size="lg">
+                Invest Now
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+              <Button href="#plans" size="lg" variant="outline">
+                Our Plans
+              </Button>
             </div>
           </motion.div>
 
@@ -75,46 +110,32 @@ export function Hero() {
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
             className="relative"
           >
-            <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-5 shadow-2xl shadow-black/40 backdrop-blur">
+            <div className="rounded-3xl border border-border-subtle bg-gradient-to-br from-brand-light via-white to-growth-light p-6 pb-8 shadow-2xl shadow-slate-900/10 sm:pb-28">
               <div className="flex items-center justify-between">
-                <p className="text-sm font-semibold text-white/70">
-                  Your Watchlist
-                </p>
-                <span className="rounded-full bg-growth/15 px-2.5 py-1 text-xs font-semibold text-growth">
-                  +2.4% today
+                <p className="text-sm font-semibold text-navy/70">Hamare Plans</p>
+                <span className="rounded-full bg-growth/15 px-2.5 py-1 text-xs font-semibold text-growth-dark">
+                  Guaranteed*
                 </span>
               </div>
 
               <div className="mt-5 space-y-3">
-                {[
-                  { name: "NIFTY 50", value: "24,812.35", change: "+1.18%", up: true },
-                  { name: "SENSEX", value: "81,540.20", change: "+1.02%", up: true },
-                  { name: "Reliance Ind.", value: "2,952.40", change: "+1.17%", up: true },
-                  { name: "HDFC Bank", value: "1,687.90", change: "-0.32%", up: false },
-                ].map((row) => (
-                  <div
-                    key={row.name}
-                    className="flex items-center justify-between rounded-xl bg-white/5 px-4 py-3"
-                  >
-                    <span className="text-sm font-medium text-white/80">
-                      {row.name}
-                    </span>
-                    <div className="text-right">
-                      <p className="text-sm font-semibold text-white">
-                        {row.value}
-                      </p>
-                      <p
-                        className={
-                          row.up
-                            ? "text-xs font-medium text-growth"
-                            : "text-xs font-medium text-red-400"
-                        }
-                      >
-                        {row.change}
+                {plans.map((plan) => {
+                  const theme = themeClasses[plan.theme];
+                  return (
+                    <div
+                      key={plan.slug}
+                      className="flex items-center justify-between rounded-xl bg-white/70 px-4 py-3.5"
+                    >
+                      <div>
+                        <p className="text-sm font-medium text-navy">{plan.name}</p>
+                        <p className="text-xs text-foreground/45">{plan.monthlyProfit}% every month</p>
+                      </div>
+                      <p className={cn("font-display text-xl font-bold", theme.text)}>
+                        {plan.yearlyProfit}%
                       </p>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
 
@@ -122,29 +143,18 @@ export function Hero() {
               initial={{ opacity: 0, x: 20, y: 20 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="absolute -bottom-6 -left-6 hidden rounded-2xl border border-border-subtle bg-white p-4 shadow-xl sm:flex sm:items-center sm:gap-3"
+              className="absolute -bottom-6 -left-6 hidden items-center gap-3 rounded-2xl border border-border-subtle bg-white p-4 shadow-xl sm:flex"
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent-light text-accent-dark">
-                <Wallet className="h-5 w-5" />
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-light text-brand">
+                <Landmark className="h-5 w-5" />
               </span>
               <div>
-                <p className="text-xs text-foreground/50">SIP Calculator</p>
-                <p className="text-sm font-semibold text-navy">Plan your goal</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: -20, y: -20 }}
-              animate={{ opacity: 1, x: 0, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.65 }}
-              className="absolute -top-6 -right-4 hidden rounded-2xl border border-border-subtle bg-white p-4 shadow-xl sm:flex sm:items-center sm:gap-3"
-            >
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-growth-light text-growth-dark">
-                <ShieldCheck className="h-5 w-5" />
-              </span>
-              <div>
-                <p className="text-xs text-foreground/50">Insurance</p>
-                <p className="text-sm font-semibold text-navy">Compare plans</p>
+                <div className="flex items-center gap-1.5">
+                  <p className="text-xs text-foreground/50">Monthly Profit Transfer</p>
+                  <CheckCircle2 className="h-3.5 w-3.5 text-growth" />
+                </div>
+                <p className="font-display text-lg font-bold text-navy">₹9,000</p>
+                <p className="text-[11px] text-foreground/45">Har mahine bank account mein</p>
               </div>
             </motion.div>
           </motion.div>

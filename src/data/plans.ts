@@ -14,7 +14,7 @@ import {
   Building2,
 } from "lucide-react";
 
-export type PlanTheme = "growth" | "navy" | "violet";
+export type PlanTheme = "growth" | "navy" | "accent";
 export type TableType = "lumpsum" | "sip3year";
 
 export type LumpsumRow = {
@@ -70,49 +70,6 @@ export type FixedPlan = {
 
 export const plans: FixedPlan[] = [
   {
-    slug: "jivan-suraksha-plan",
-    name: "Jivan Suraksha Plan",
-    hindiTagline: "सुरक्षित निवेश, निश्चित रिटर्न",
-    hindiSubtitle: "आज की बचत, कल का सुरक्षित जीवन",
-    englishTagline: "Secure investment, guaranteed returns — withdraw anytime, no lock-in.",
-    monthlyProfit: 1.5,
-    yearlyProfit: 18,
-    minInvestment: 50000,
-    maxInvestment: 1000000,
-    tableType: "lumpsum",
-    tenureLabel: "No Lock-in",
-    payout: "Monthly",
-    transfer: "Direct to Bank Account",
-    withdrawal: "Withdraw your full amount + profit anytime — zero lock-in period.",
-    withdrawalTime: "Within 72 hours",
-    theme: "growth",
-    about:
-      "Jivan Suraksha is a secure, no-lock-in investment plan that pays a fixed 1.5% profit every month — a steady 18% a year — with the freedom to withdraw your full amount plus profit whenever you need it, no questions asked.",
-    highlights: [
-      "Fixed 1.5% profit credited every month (18% yearly)",
-      "Withdraw your full amount + profit anytime — zero lock-in",
-      "100% safe & transparent, no hidden charges",
-      "Profit transferred directly to your bank account",
-      "Funds credited within 72 hours of withdrawal",
-    ],
-    useCases: [
-      { icon: GraduationCap, title: "Children's Education", points: ["Fund your child's education without worry"] },
-      { icon: HeartHandshake, title: "Health & Emergencies", points: ["Stay ready for medical & emergency needs"] },
-      { icon: Users, title: "Retirement Security", points: ["A secure, worry-free life after retirement"] },
-      { icon: Home, title: "Life Goals", points: ["Fulfil your dreams — a new home, a new car"] },
-    ],
-    totalColumnLabel: "Total After 12 Months (₹)",
-    lumpsumRows: [
-      { investment: 50000, monthlyProfit: 750, yearlyProfit: 9000, total: 59000 },
-      { investment: 100000, monthlyProfit: 1500, yearlyProfit: 18000, total: 118000 },
-      { investment: 200000, monthlyProfit: 3000, yearlyProfit: 36000, total: 236000 },
-      { investment: 300000, monthlyProfit: 4500, yearlyProfit: 54000, total: 354000 },
-      { investment: 500000, monthlyProfit: 7500, yearlyProfit: 90000, total: 590000 },
-      { investment: 750000, monthlyProfit: 11250, yearlyProfit: 135000, total: 885000 },
-      { investment: 1000000, monthlyProfit: 15000, yearlyProfit: 180000, total: 1180000, isMax: true },
-    ],
-  },
-  {
     slug: "jivan-bachat-sip-plan",
     name: "Jivan Bachat SIP Plan",
     hindiTagline: "छोटी बचत, बड़ा बदलाव",
@@ -127,14 +84,14 @@ export const plans: FixedPlan[] = [
     payout: "Monthly",
     transfer: "Direct to Bank Account",
     withdrawal: "Easy withdrawal as per plan terms, whenever you need it.",
-    theme: "navy",
+    theme: "growth",
     popular: true,
     about:
       "Jivan Bachat SIP Plan turns small, regular savings into a big outcome. Invest as little as ₹1,000 a month for 3 years and earn 1% profit every month — 12% a year — with your profits compounding year after year.",
     highlights: [
-      "Fixed 1% monthly profit (12% yearly), compounding each year",
-      "Start with as little as ₹1,000 a month",
-      "3-year plan built for steady, disciplined saving",
+      "1 saal ka 12% profit",
+      "Minimum 3 saal tak ka plan",
+      "Har mahine SIP karein, 1 saal baad 12% profit paayein",
       "100% safe & transparent, no hidden charges",
       "Monthly profit transferred directly to your account",
     ],
@@ -165,6 +122,49 @@ export const plans: FixedPlan[] = [
     ],
   },
   {
+    slug: "jivan-suraksha-plan",
+    name: "Jivan Suraksha Plan",
+    hindiTagline: "सुरक्षित निवेश, निश्चित रिटर्न",
+    hindiSubtitle: "आज की बचत, कल का सुरक्षित जीवन",
+    englishTagline: "Secure investment, guaranteed returns — withdraw anytime, no lock-in.",
+    monthlyProfit: 1.5,
+    yearlyProfit: 18,
+    minInvestment: 50000,
+    maxInvestment: 1000000,
+    tableType: "lumpsum",
+    tenureLabel: "No Lock-in",
+    payout: "Monthly",
+    transfer: "Direct to Bank Account",
+    withdrawal: "Withdraw your full amount + profit anytime — zero lock-in period.",
+    withdrawalTime: "Within 72 hours",
+    theme: "navy",
+    about:
+      "Jivan Suraksha is a secure, no-lock-in investment plan that pays a fixed 1.5% profit every month — a steady 18% a year — with the freedom to withdraw your full amount plus profit whenever you need it, no questions asked.",
+    highlights: [
+      "1 saal ka 18% profit",
+      "Har mahine profit aapke Customer Care Account mein transfer ho jata hai",
+      "Minimum 3 saal ke liye plan",
+      "100% safe & transparent, no hidden charges",
+      "Funds credited within 72 hours of withdrawal",
+    ],
+    useCases: [
+      { icon: GraduationCap, title: "Children's Education", points: ["Fund your child's education without worry"] },
+      { icon: HeartHandshake, title: "Health & Emergencies", points: ["Stay ready for medical & emergency needs"] },
+      { icon: Users, title: "Retirement Security", points: ["A secure, worry-free life after retirement"] },
+      { icon: Home, title: "Life Goals", points: ["Fulfil your dreams — a new home, a new car"] },
+    ],
+    totalColumnLabel: "Total After 12 Months (₹)",
+    lumpsumRows: [
+      { investment: 50000, monthlyProfit: 750, yearlyProfit: 9000, total: 59000 },
+      { investment: 100000, monthlyProfit: 1500, yearlyProfit: 18000, total: 118000 },
+      { investment: 200000, monthlyProfit: 3000, yearlyProfit: 36000, total: 236000 },
+      { investment: 300000, monthlyProfit: 4500, yearlyProfit: 54000, total: 354000 },
+      { investment: 500000, monthlyProfit: 7500, yearlyProfit: 90000, total: 590000 },
+      { investment: 750000, monthlyProfit: 11250, yearlyProfit: 135000, total: 885000 },
+      { investment: 1000000, monthlyProfit: 15000, yearlyProfit: 180000, total: 1180000, isMax: true },
+    ],
+  },
+  {
     slug: "today-growth-plan",
     name: "Today Growth Plan",
     hindiTagline: "Smart Investment, Secure Future",
@@ -179,14 +179,14 @@ export const plans: FixedPlan[] = [
     payout: "Monthly",
     transfer: "Direct to Bank Account",
     withdrawal: "Withdrawals as per company policy and terms.",
-    theme: "violet",
+    theme: "accent",
     about:
       "Today Growth Plan is built for investors ready to deploy larger capital for the highest returns in our lineup — a fixed 3% every month, 36% a year, with profit transferred directly to your bank account.",
     highlights: [
-      "Fixed 3% profit every month — 36% total yearly return",
-      "Built for high-ticket investors (₹3L – ₹15L)",
+      "Har mahine 3% Profit (36% Per Year)",
+      "Har mahine profit aapke direct account mein transfer ho jata hai",
+      "Minimum 3 saal ke liye plan",
       "100% safe & transparent, no hidden charges",
-      "Monthly profit transferred directly to your account",
       "Highest total returns across our entire plan lineup",
     ],
     useCases: [
@@ -243,8 +243,8 @@ export const themeClasses: Record<
     bg: string;
     bgLight: string;
     border: string;
-    button: "growth" | "navy" | "violet";
-    badge: "growth" | "navy" | "violet";
+    button: "growth" | "navy" | "accent";
+    badge: "growth" | "navy" | "accent";
     gradient: string;
   }
 > = {
@@ -266,14 +266,14 @@ export const themeClasses: Record<
     badge: "navy",
     gradient: "from-brand via-brand-dark to-navy",
   },
-  violet: {
-    text: "text-violet",
-    bg: "bg-violet",
-    bgLight: "bg-violet-light",
-    border: "border-violet/30",
-    button: "violet",
-    badge: "violet",
-    gradient: "from-violet via-violet-dark to-navy",
+  accent: {
+    text: "text-accent-dark",
+    bg: "bg-accent",
+    bgLight: "bg-accent-light",
+    border: "border-accent/30",
+    button: "accent",
+    badge: "accent",
+    gradient: "from-accent via-accent-dark to-navy",
   },
 };
 

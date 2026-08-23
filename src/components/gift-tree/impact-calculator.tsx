@@ -3,7 +3,7 @@
 import * as React from "react";
 import { Cloud, Droplets, Sun, Wind } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { SliderField } from "@/components/calculators/sip-calculator";
+import { SliderField } from "@/components/ui/slider-field";
 import { perTreeAnnualImpact } from "@/data/giftATree";
 import { formatNumber } from "@/lib/utils";
 

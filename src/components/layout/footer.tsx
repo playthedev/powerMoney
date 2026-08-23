@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone, ShieldCheck, HeartHandshake, Eye } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { Container } from "@/components/ui/container";
 import { footerNav } from "@/data/nav";
@@ -14,12 +14,13 @@ export function Footer() {
   return (
     <footer className="bg-navy text-white">
       <Container className="py-16">
-        <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:grid-cols-6">
+        <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 lg:grid-cols-5">
           <div className="col-span-2 sm:col-span-3 lg:col-span-2">
             <Logo variant="dark" />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-white/50">
-              Research, compare and understand stocks, mutual funds, loans
-              and insurance — all in one place, built for Indian investors.
+              Fixed-tenure investment plans with guaranteed monthly returns,
+              transferred directly to your bank account — built for Indian
+              investors.
             </p>
             <div className="mt-5 flex gap-3">
               {[FacebookIcon, XIcon, InstagramIcon, LinkedInIcon].map((Icon, i) => (
@@ -72,8 +73,9 @@ export function Footer() {
         <div className="mt-8 flex flex-col gap-4 border-t border-white/10 pt-8 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} PowerMoney. All rights reserved.</p>
           <p className="max-w-2xl leading-relaxed">
-            Mutual fund and stock market investments are subject to market
-            risks. Read all scheme-related documents carefully.
+            *Guaranteed returns are as per the selected plan&apos;s terms.
+            Please read all plan-related documents carefully before
+            investing.
           </p>
         </div>
 
@@ -91,6 +93,28 @@ export function Footer() {
           </p>
         </div>
       </Container>
+
+      <div className="border-t border-white/10 bg-navy-light/40">
+        <Container className="flex flex-col items-center justify-between gap-4 py-4 text-xs font-semibold uppercase tracking-wide text-white/60 sm:flex-row">
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2">
+            <span className="flex items-center gap-2">
+              <ShieldCheck className="h-4 w-4 text-growth" />
+              100% Safe
+            </span>
+            <span className="flex items-center gap-2">
+              <HeartHandshake className="h-4 w-4 text-brand" />
+              100% Trusted
+            </span>
+            <span className="flex items-center gap-2">
+              <Eye className="h-4 w-4 text-accent" />
+              100% Transparent
+            </span>
+          </div>
+          <p className="normal-case tracking-normal text-white/40">
+            Power Money — Powering Your Financial Future
+          </p>
+        </Container>
+      </div>
     </footer>
   );
 }

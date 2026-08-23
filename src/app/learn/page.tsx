@@ -10,7 +10,7 @@ import { articles } from "@/data/articles";
 export const metadata: Metadata = {
   title: "Learn",
   description:
-    "Plain-language explainers on stocks, mutual funds, loans and insurance to help you make informed decisions.",
+    "Plain-language explainers on investing, credit and insurance basics to help you make informed money decisions.",
 };
 
 export default function LearnPage() {

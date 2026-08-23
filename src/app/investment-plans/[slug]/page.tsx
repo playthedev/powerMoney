@@ -56,7 +56,7 @@ export default async function PlanDetailPage({
 
       <Container className="py-10 sm:py-14">
         <Link
-          href="/investment-plans"
+          href="/#plans"
           className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground/55 hover:text-navy"
         >
           <ArrowLeft className="h-4 w-4" />

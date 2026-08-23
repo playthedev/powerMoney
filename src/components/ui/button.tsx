@@ -16,6 +16,8 @@ const buttonVariants = cva(
           "bg-navy text-white shadow-sm shadow-navy/20 hover:bg-navy-light hover:shadow-md active:scale-[0.98]",
         violet:
           "bg-violet text-white shadow-sm shadow-violet/20 hover:bg-violet-dark hover:shadow-md active:scale-[0.98]",
+        accent:
+          "bg-accent text-navy shadow-sm shadow-accent/20 hover:bg-accent-dark hover:text-white hover:shadow-md active:scale-[0.98]",
         outline:
           "border border-border-subtle bg-white text-foreground hover:border-brand hover:text-brand active:scale-[0.98]",
         ghost: "text-foreground hover:bg-surface active:scale-[0.98]",

@@ -1,8 +1,20 @@
-import { CheckCircle2, TrendingUp } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { cn, formatINR } from "@/lib/utils";
+import { LogoMark } from "@/components/logo";
+import { cn } from "@/lib/utils";
 import { themeClasses, type FixedPlan } from "@/data/plans";
+import {
+  CoinJarIllustration,
+  MoneyBagIllustration,
+  ShieldCoinsIllustration,
+} from "@/components/plans/plan-illustrations";
+
+const illustrationByTheme = {
+  growth: CoinJarIllustration,
+  navy: ShieldCoinsIllustration,
+  accent: MoneyBagIllustration,
+};
 
 export function PlanCard({
   plan,
@@ -12,20 +24,14 @@ export function PlanCard({
   featured?: boolean;
 }) {
   const theme = themeClasses[plan.theme];
-  const features = [
-    `${plan.monthlyProfit}% Monthly Profit`,
-    `Tenure: ${plan.tenureLabel}`,
-    `Minimum Investment: ${formatINR(plan.minInvestment)}`,
-    `Maximum Investment: ${formatINR(plan.maxInvestment)}`,
-    `Profit Payout: ${plan.payout}`,
-    `Profit Transfer: ${plan.transfer}`,
-  ];
+  const Illustration = illustrationByTheme[plan.theme];
 
   return (
     <Card
       className={cn(
-        "relative flex flex-col p-6 sm:p-7",
-        featured ? "border-navy/30 shadow-xl shadow-navy/10 lg:-translate-y-3" : theme.border
+        "relative flex flex-col items-center border-2 p-6 text-center shadow-sm sm:p-7",
+        theme.border,
+        featured && "shadow-lg"
       )}
     >
       {plan.popular && (
@@ -34,9 +40,11 @@ export function PlanCard({
         </span>
       )}
 
+      <LogoMark className="h-6 w-auto" />
+
       <span
         className={cn(
-          "inline-flex w-fit items-center rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wide text-white",
+          "mt-3 inline-flex w-fit items-center rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wide text-white",
           theme.bg
         )}
       >
@@ -44,25 +52,34 @@ export function PlanCard({
       </span>
       <p className="mt-2.5 text-sm font-semibold text-navy/70">{plan.hindiTagline}</p>
 
-      <div className="mt-4 flex items-end gap-3">
-        <p className={cn("font-display text-5xl font-extrabold leading-none", theme.text)}>
-          {plan.yearlyProfit}%
-        </p>
-        <TrendingUp className={cn("mb-1.5 h-8 w-8 opacity-30", theme.text)} />
-      </div>
-      <p className="mt-1 text-sm font-medium text-foreground/50">Yearly Returns</p>
+      <span
+        className={cn(
+          "mt-3 inline-flex items-center rounded-full px-3.5 py-1 text-sm font-bold text-white",
+          theme.bg
+        )}
+      >
+        {plan.yearlyProfit}% Per Year
+      </span>
 
-      <ul className="mt-6 flex-1 space-y-2.5">
-        {features.map((f) => (
-          <li key={f} className="flex items-start gap-2 text-sm text-foreground/65">
+      <Illustration className={cn("mt-5", theme.text)} />
+
+      <ul className="mt-5 w-full flex-1 space-y-2.5 text-left">
+        {plan.highlights.slice(0, 3).map((h) => (
+          <li key={h} className="flex items-start gap-2 text-sm text-foreground/65">
             <CheckCircle2 className={cn("mt-0.5 h-4 w-4 shrink-0", theme.text)} />
-            {f}
+            {h}
           </li>
         ))}
       </ul>
 
-      <Button href={`/investment-plans/${plan.slug}`} variant={theme.button} size="lg" className="mt-7 w-full">
-        Choose This Plan
+      <Button
+        href={`/investment-plans/${plan.slug}`}
+        variant={theme.button}
+        size="lg"
+        className="mt-7 w-full"
+      >
+        Plan Details
+        <ArrowRight className="h-4 w-4" />
       </Button>
     </Card>
   );

@@ -9,7 +9,7 @@ import { trustStats } from "@/data/testimonials";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "PowerMoney helps Indians research stocks, mutual funds, loans and insurance without the noise.",
+    "PowerMoney helps Indians grow their savings with fixed-tenure investment plans and guaranteed monthly returns.",
 };
 
 const values = [
