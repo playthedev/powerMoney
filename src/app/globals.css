@@ -153,7 +153,7 @@ a, button, input, select, textarea { -webkit-tap-highlight-color: transparent; }
 .reference-home { container-type: inline-size; max-width: 1280px; margin: auto; font-family: Arial, Helvetica, sans-serif; color: #111722; }
 .reference-home h1, .reference-home h2, .reference-home h3, .reference-home p, .reference-home figure { margin: 0; }
 .reference-hero { height: 46.667cqw; background: #00152b; position: relative; overflow: hidden; color: #f8f8f8; }
-.hero-art { position: absolute; inset: 0; background: url('/hero-investment-v2.png') center right / cover no-repeat; }
+.hero-art { position: absolute; inset: 0; background: url('/hero-investment-v3.png') center right / cover no-repeat; }
 .reference-hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg,#00152b 0%,#00152b 40%,#00152be8 49%,transparent 65%); }
 .hero-copy { position: relative; padding: 4.5cqw 2.94cqw; width: 53%; }
 .hero-copy h1 { font-size: 5.1cqw; line-height: .995; font-weight: 750; letter-spacing: -.08cqw; }
@@ -293,7 +293,7 @@ footer > .h-1 { background: var(--color-accent); }
 /* 1440px reference layout: full-bleed sections with a centered 1240px content area. */
 .reference-home { width: 100%; max-width: none; margin: 0; }
 .hero-art {
- background-image: url('/hero-investment-v2.png');
+ background-image: url('/hero-investment-v3.png');
  background-size: cover;
  background-position: center right;
  clip-path: none;
@@ -378,7 +378,7 @@ footer > .h-1 { background: var(--color-accent); }
 }
 
 @media (max-width: 479px) {
- .hero-art { height: 250px; background-image: url('/hero-investment-v2.png'); background-size: cover; background-position: 70% center; clip-path: none; mask-image: linear-gradient(90deg,transparent 0%,black 42%); }
+ .hero-art { height: 250px; background-image: url('/hero-investment-v3.png'); background-size: cover; background-position: 70% center; clip-path: none; mask-image: linear-gradient(90deg,transparent 0%,black 42%); }
  .handshake-art { background-image: url('/about-handshake.jpg'); background-size: cover; background-position: center 58%; }
  .investor-faces { width: auto; height: 30px; background: none; }
  .investor-faces span,.investor-faces strong { width: 30px; height: 30px; }
