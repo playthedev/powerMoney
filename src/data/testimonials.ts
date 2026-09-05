@@ -30,8 +30,8 @@ export const testimonials = [
 ];
 
 export const trustStats = [
-  { label: "Khush Niveshak", value: "15,000+" },
-  { label: "Total Investment", value: "₹250+ Cr" },
-  { label: "Total Profit Paid", value: "₹35+ Cr" },
-  { label: "On-Time Payments", value: "100%" },
+  { label: "Happy Investors", value: "10,000+" },
+  { label: "Total Investments", value: "₹25Cr+" },
+  { label: "On-Time Payouts", value: "99.8%" },
+  { label: "Trusted Platform", value: "100%" },
 ];

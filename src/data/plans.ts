@@ -255,7 +255,7 @@ export const themeClasses: Record<
     border: "border-growth/30",
     button: "growth",
     badge: "growth",
-    gradient: "from-growth via-growth-dark to-navy",
+    gradient: "from-shell via-navy-light to-shell",
   },
   navy: {
     text: "text-navy",
@@ -264,7 +264,7 @@ export const themeClasses: Record<
     border: "border-navy/25",
     button: "navy",
     badge: "navy",
-    gradient: "from-brand via-brand-dark to-navy",
+    gradient: "from-shell via-navy-light to-shell",
   },
   accent: {
     text: "text-accent-dark",
@@ -273,7 +273,7 @@ export const themeClasses: Record<
     border: "border-accent/30",
     button: "accent",
     badge: "accent",
-    gradient: "from-accent via-accent-dark to-navy",
+    gradient: "from-shell via-navy-light to-shell",
   },
 };
 

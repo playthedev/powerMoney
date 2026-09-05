@@ -20,12 +20,12 @@ export function PageHero({
         className="pointer-events-none absolute inset-0 opacity-30"
         style={{
           background:
-            "radial-gradient(50% 60% at 15% 0%, rgba(26,115,232,0.35), transparent), radial-gradient(40% 50% at 90% 100%, rgba(23,138,76,0.3), transparent)",
+            "radial-gradient(50% 60% at 15% 0%, rgba(36,101,169,0.35), transparent), radial-gradient(40% 50% at 90% 100%, rgba(239,195,95,0.14), transparent)",
         }}
       />
       <Container className="relative">
         {eyebrow && (
-          <p className="text-sm font-semibold uppercase tracking-wider text-growth">
+          <p className="text-sm font-semibold uppercase tracking-wider text-accent">
             {eyebrow}
           </p>
         )}

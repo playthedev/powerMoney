@@ -27,21 +27,19 @@ export function Logo({
     <span className={cn("inline-flex items-center gap-2.5", className)}>
       <LogoMark className={markClassName} />
       <span className="flex flex-col leading-none">
-        <span
-          className={cn(
-            "font-display text-lg font-extrabold tracking-tight",
-            variant === "light" ? "text-navy" : "text-white"
-          )}
-        >
-          Power<span className="text-brand">Money</span>
+        <span className="font-display text-xl font-extrabold uppercase tracking-tight">
+          <span className="text-accent">Power</span>{" "}
+          <span className={variant === "light" ? "text-brand" : "text-white"}>
+            Money
+          </span>
         </span>
         <span
           className={cn(
-            "text-[10px] font-medium uppercase tracking-wider",
-            variant === "light" ? "text-foreground/40" : "text-white/50"
+            "mt-1 text-[10px] font-medium tracking-wide",
+            variant === "light" ? "text-foreground/45" : "text-white/50"
           )}
         >
-          Powering your financial future
+          Grow More. Earn More. Live More.
         </span>
       </span>
     </span>

@@ -19,6 +19,7 @@ export function LeadForm({
   submitLabel?: string;
   showMessage?: boolean;
 }) {
+  const formId = React.useId();
   const [status, setStatus] = React.useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = React.useState("");
 
@@ -92,20 +93,20 @@ export function LeadForm({
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="mb-1.5 block text-sm font-medium text-navy">
+          <label htmlFor={`${formId}-name`} className="mb-1.5 block text-sm font-medium text-navy">
             Full name
           </label>
-          <Input placeholder="Your name" {...register("name")} />
+          <Input placeholder="Your name" id={`${formId}-name`} {...register("name")} />
           {errors.name && (
             <p className="mt-1 text-xs text-danger">{errors.name.message}</p>
           )}
         </div>
 
         <div>
-          <label className="mb-1.5 block text-sm font-medium text-navy">
+          <label htmlFor={`${formId}-phone`} className="mb-1.5 block text-sm font-medium text-navy">
             Phone number
           </label>
-          <Input placeholder="98765 43210" {...register("phone")} />
+          <Input placeholder="98765 43210" id={`${formId}-phone`} {...register("phone")} />
           {errors.phone && (
             <p className="mt-1 text-xs text-danger">{errors.phone.message}</p>
           )}
@@ -114,29 +115,29 @@ export function LeadForm({
 
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className="mb-1.5 block text-sm font-medium text-navy">
+          <label htmlFor={`${formId}-email`} className="mb-1.5 block text-sm font-medium text-navy">
             Email address
           </label>
-          <Input type="email" placeholder="you@example.com" {...register("email")} />
+          <Input type="email" placeholder="you@example.com" id={`${formId}-email`} {...register("email")} />
           {errors.email && (
             <p className="mt-1 text-xs text-danger">{errors.email.message}</p>
           )}
         </div>
 
         <div>
-          <label className="mb-1.5 block text-sm font-medium text-navy">
+          <label htmlFor={`${formId}-city`} className="mb-1.5 block text-sm font-medium text-navy">
             City <span className="text-foreground/40">(optional)</span>
           </label>
-          <Input placeholder="Bengaluru" {...register("city")} />
+          <Input placeholder="Bengaluru" id={`${formId}-city`} {...register("city")} />
         </div>
       </div>
 
       {interestOptions && interestOptions.length > 0 && (
         <div>
-          <label className="mb-1.5 block text-sm font-medium text-navy">
+          <label htmlFor={`${formId}-interest`} className="mb-1.5 block text-sm font-medium text-navy">
             I&apos;m interested in
           </label>
-          <Select {...register("interest")}>
+          <Select id={`${formId}-interest`} {...register("interest")}>
             {interestOptions.map((opt) => (
               <option key={opt} value={opt}>
                 {opt}
@@ -148,15 +149,15 @@ export function LeadForm({
 
       {showMessage && (
         <div>
-          <label className="mb-1.5 block text-sm font-medium text-navy">
+          <label htmlFor={`${formId}-message`} className="mb-1.5 block text-sm font-medium text-navy">
             Message <span className="text-foreground/40">(optional)</span>
           </label>
-          <Textarea rows={3} placeholder="Tell us a bit more…" {...register("message")} />
+          <Textarea rows={3} placeholder="Tell us a bit more…" id={`${formId}-message`} {...register("message")} />
         </div>
       )}
 
       {status === "error" && (
-        <div className="flex items-start gap-2 rounded-xl bg-danger-light px-4 py-3 text-sm text-danger">
+        <div role="alert" className="flex items-start gap-2 rounded-xl bg-danger-light px-4 py-3 text-sm text-danger">
           <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0" />
           {errorMessage}
         </div>

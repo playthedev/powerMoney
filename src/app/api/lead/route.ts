@@ -25,7 +25,13 @@ export async function POST(request: Request) {
   }
 
   try {
-    await sendLeadEmail(parsed.data);
+    const result = await sendLeadEmail(parsed.data);
+    if ('skipped' in result || result.error) {
+      return NextResponse.json(
+        { error: "Enquiries are temporarily unavailable. Please contact us by phone or email." },
+        { status: 503 }
+      );
+    }
     return NextResponse.json({ ok: true });
   } catch (error) {
     console.error("[api/lead] failed to send email", error);
