@@ -10,14 +10,14 @@ export const testimonials = [
     name: "Rohit Verma",
     role: "Small Business Owner, Pune",
     quote:
-      "I started with the Jivan Bachat SIP plan for my daughter's education. Seeing the profit compound every year has been genuinely reassuring.",
+      "I started with the Jeevan Bachat SIP plan for my daughter's education. Seeing the profit compound every year has been genuinely reassuring.",
     initials: "RV",
   },
   {
     name: "Priya Nair",
     role: "Marketing Manager, Kochi",
     quote:
-      "No lock-in on Jivan Suraksha meant I could invest without worrying — and when I needed the money back, it was in my account within 3 days.",
+      "No lock-in on Jeevan Suraksha meant I could invest without worrying — and when I needed the money back, it was in my account within 3 days.",
     initials: "PN",
   },
   {

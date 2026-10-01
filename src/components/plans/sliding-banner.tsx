@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, ShieldCheck, TrendingUp, Wallet } from "lucide-react";
 import { Container } from "@/components/ui/container";
@@ -8,8 +9,18 @@ import { Button } from "@/components/ui/button";
 import { cn, formatINR } from "@/lib/utils";
 import { themeClasses, type FixedPlan } from "@/data/plans";
 
+// A unique photo background per plan, echoing its personality — a savings
+// jar for the SIP plan, hands holding coins for the secure-income plan, and
+// rising coin stacks for the high-growth plan.
+const bannerBackgrounds: Record<string, string> = {
+  "jivan-bachat-sip-plan": "/plan-sip-bg.jpg",
+  "jivan-suraksha-plan": "/plan-suraksha-bg.jpg",
+  "today-growth-plan": "/plan-growth-bg.jpg",
+};
+
 export function SlidingBanner({ plan }: { plan: Omit<FixedPlan, "useCases"> }) {
   const theme = themeClasses[plan.theme];
+  const bgImage = bannerBackgrounds[plan.slug];
   const isSip = plan.tableType === "sip3year";
   const sampleAmount = Math.max(plan.minInvestment, isSip ? 5000 : 100000);
   const samplePayout = Math.round((sampleAmount * plan.monthlyProfit) / 100);
@@ -65,6 +76,20 @@ export function SlidingBanner({ plan }: { plan: Omit<FixedPlan, "useCases"> }) {
 
   return (
     <section className={cn("relative overflow-hidden bg-gradient-to-br py-20 sm:py-28", theme.gradient)}>
+      {bgImage && (
+        <Image
+          src={bgImage}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      )}
+
+      {/* dark scrim so the photo reads as texture, not a legibility fight with the copy */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-shell via-shell/90 to-shell/75" />
+
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.07]"
         style={{

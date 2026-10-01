@@ -18,7 +18,7 @@ export function HelpCtaBar() {
             <Button href="/contact" size="lg" variant="accent" className="mt-3 min-w-40 text-navy">Invest Now <ArrowRight className="h-4 w-4" /></Button>
           </div>
           <div className="relative flex min-w-fit flex-col gap-3 text-sm text-white/70">
-            <a href="tel:+911800123456" className="flex items-center gap-2.5 transition-colors hover:text-white"><Phone className="h-4 w-4 shrink-0 text-accent" />1800-123-456</a>
+            <a href="tel:+919999880667" className="flex items-center gap-2.5 transition-colors hover:text-white"><Phone className="h-4 w-4 shrink-0 text-accent" />99998 80667</a>
             <a href="mailto:support@powermoney.in" className="flex items-center gap-2.5 transition-colors hover:text-white"><Mail className="h-4 w-4 shrink-0 text-accent" />support@powermoney.in</a>
           </div>
         </div>

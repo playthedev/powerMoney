@@ -1,13 +1,21 @@
 ﻿import Link from "next/link";
-import { ShieldCheck, Users, Award, ChartNoAxesCombined, BadgeIndianRupee, Clock3, Landmark, HandCoins, Crown, Gem, ChevronRight } from "lucide-react";
+import { ShieldCheck, Users, Award, ChartNoAxesCombined, BadgeIndianRupee, Clock3, Landmark, HandCoins, ChevronRight } from "lucide-react";
 import { HowItWorks } from "@/components/home/how-it-works";
 import { HelpCtaBar } from "@/components/home/help-cta-bar";
-const plans = [
- { icon: HandCoins, name: "Starter Plan", description: "Start small, grow big", rate: "1.5%" },
- { icon: ChartNoAxesCombined, name: "Growth Plan", description: "For steady growth", rate: "2%" },
- { icon: Crown, name: "Premium Plan", description: "Higher returns, greater future", rate: "2.5%" },
- { icon: Gem, name: "Elite Plan", description: "For maximum growth", rate: "3%" },
-];
+import { plans as investmentPlans } from "@/data/plans";
+const planCardMeta: Record<string, { icon: typeof HandCoins; description: string }> = {
+ "jivan-bachat-sip-plan": { icon: HandCoins, description: "Monthly Savings Plan" },
+ "jivan-suraksha-plan": { icon: ShieldCheck, description: "Long Term Income Plan" },
+ "today-growth-plan": { icon: ChartNoAxesCombined, description: "Compound Growth Plan" },
+};
+const plans = investmentPlans.map((p) => ({
+ icon: planCardMeta[p.slug]?.icon ?? HandCoins,
+ name: p.name,
+ description: planCardMeta[p.slug]?.description ?? p.englishTagline,
+ rate: p.tableType === "sip3year" ? `${p.yearlyProfit}%` : `${p.monthlyProfit}%`,
+ rateLabel: p.tableType === "sip3year" ? "Annual Profit" : "Monthly Profit",
+ slug: p.slug,
+}));
 const reviews = [
  { name: "Rahul Sharma", quote: "Power Money is a trusted platform. I am getting regular returns without any problem." },
  { name: "Priya Verma", quote: "Best investment platform with transparent system and great support." },
@@ -26,7 +34,7 @@ export default function Home() {
  <Link href="/about" className="reference-button navy">Know More About Us <ChevronRight /></Link></div>
  <div className="investor-card"><div className="handshake-art" role="img" aria-label="An investor and advisor shaking hands" /><div className="investor-card-body"><ShieldCheck className="investor-shield" /><div><h3>Trusted by Thousands of Investors</h3><div className="investor-faces" role="img" aria-label="Our investor community">{[1,2,3,4,5].map(number => <span key={number} style={{ backgroundImage: `url('/avatar-${number}.jpg')` }} />)}<strong>10K+</strong></div><p>10,000+ Happy Investors and Growing</p></div></div></div>
  </section>
- <section className="reference-plans" id="plans"><p className="eyebrow">OUR INVESTMENT PLANS</p><h2>Flexible Plans For Every Investor</h2><div className="reference-plan-grid">{plans.map(plan => <article className="reference-plan" key={plan.name}><span className="plan-icon"><plan.icon /></span><h3>{plan.name}</h3><p>{plan.description}</p><strong className="plan-rate">{plan.rate}</strong><p>Daily Returns</p><Link className="reference-button" href="/contact">Invest Now</Link></article>)}</div></section>
+ <section className="reference-plans" id="plans"><p className="eyebrow">OUR 3 POWERFUL INVESTMENT PLANS</p><h2>Flexible Plans For Every Investor</h2><div className="reference-plan-grid">{plans.map(plan => <article className="reference-plan" key={plan.name}><span className="plan-icon"><plan.icon /></span><h3>{plan.name}</h3><p>{plan.description}</p><strong className="plan-rate">{plan.rate}</strong><p>{plan.rateLabel}</p><Link className="reference-button" href={`/investment-plans/${plan.slug}`}>Plan Details</Link></article>)}</div></section>
  <section className="reference-stats" aria-label="Power Money in numbers">{[{ icon: Users, value: "10,000+", text: "Happy Investors" }, { icon: BadgeIndianRupee, value: "₹25CR+", text: "Total Investments" }, { icon: ChartNoAxesCombined, value: "99.8%", text: "On-Time Payouts" }, { icon: Award, value: "100%", text: "Trusted Platform" }].map(item => <div key={item.value}><item.icon /><div><strong>{item.value}</strong><p>{item.text}</p></div></div>)}</section>
  <section className="reference-reviews" id="reviews"><p className="eyebrow">WHAT OUR INVESTORS SAY</p><h2>Trusted By Thousands, Proven By Results</h2><div className="reference-review-grid">{reviews.map((review, i) => <figure key={review.name}><span className={`review-avatar avatar-${i}`} role="img" aria-label={review.name} /><div><div className="review-stars" aria-label="5 out of 5 stars">★★★★★</div><blockquote>{review.quote}</blockquote><figcaption>– {review.name}</figcaption></div></figure>)}</div></section>
  </div><HowItWorks /><HelpCtaBar /></>;

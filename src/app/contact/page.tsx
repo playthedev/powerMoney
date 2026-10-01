@@ -36,7 +36,7 @@ export default function ContactPage() {
             </p>
 
             <div className="mt-8 space-y-5">
-              <ContactRow icon={Phone} label="Call us" value="1800-123-456 (Toll Free)" />
+              <ContactRow icon={Phone} label="Call us" value="99998 80667" />
               <ContactRow icon={Mail} label="Email us" value="support@powermoney.in" />
               <ContactRow icon={MapPin} label="Visit us" value="HSR Layout, Bengaluru, India" />
             </div>

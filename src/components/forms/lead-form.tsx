@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CheckCircle2, Loader2, TriangleAlert } from "lucide-react";
 import { leadFormSchema, type LeadFormValues } from "@/lib/schemas";
+import { buildLeadWhatsAppMessage, buildWhatsAppUrl } from "@/lib/whatsapp";
 import { Input, Select, Textarea } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
@@ -22,6 +23,7 @@ export function LeadForm({
   const formId = React.useId();
   const [status, setStatus] = React.useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = React.useState("");
+  const [whatsappUrl, setWhatsappUrl] = React.useState<string | null>(null);
 
   const {
     register,
@@ -38,6 +40,17 @@ export function LeadForm({
   async function onSubmit(values: LeadFormValues) {
     setStatus("loading");
     setErrorMessage("");
+
+    // Open WhatsApp as the very first thing, synchronously, so browsers still
+    // treat it as part of the user's click (not a blocked popup). It's a plain
+    // wa.me deep link — no API or credentials needed, the visitor just has to
+    // tap Send once WhatsApp opens. (window.open's return value isn't a
+    // reliable signal here — with noopener it's always null even on success —
+    // so we always keep the link around as a visible fallback below.)
+    const url = buildWhatsAppUrl(buildLeadWhatsAppMessage(values));
+    setWhatsappUrl(url);
+    window.open(url, "_blank", "noopener,noreferrer");
+
     try {
       const res = await fetch("/api/lead", {
         method: "POST",
@@ -66,13 +79,26 @@ export function LeadForm({
           Thanks — we&apos;ve got your details
         </h3>
         <p className="mt-1.5 max-w-sm text-sm text-foreground/60">
-          Our team will reach out within 1 business day.
+          We&apos;ve opened WhatsApp with your details — just hit send there, and our team will reach out within 1 business day.
         </p>
+        {whatsappUrl && (
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 text-sm font-semibold text-growth underline underline-offset-2 hover:text-growth/80"
+          >
+            Didn&apos;t see the WhatsApp tab? Open it again
+          </a>
+        )}
         <Button
           variant="outline"
           size="sm"
           className="mt-5"
-          onClick={() => setStatus("idle")}
+          onClick={() => {
+            setStatus("idle");
+            setWhatsappUrl(null);
+          }}
         >
           Submit another enquiry
         </Button>
@@ -157,9 +183,20 @@ export function LeadForm({
       )}
 
       {status === "error" && (
-        <div role="alert" className="flex items-start gap-2 rounded-xl bg-danger-light px-4 py-3 text-sm text-danger">
-          <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0" />
-          {errorMessage}
+        <div role="alert" className="rounded-xl bg-danger-light px-4 py-3 text-sm text-danger">
+          <div className="flex items-start gap-2">
+            <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0" />
+            {errorMessage}
+          </div>
+          {whatsappUrl && (
+            <p className="mt-2 pl-6">
+              We&apos;ve still opened WhatsApp with your details — please hit send there (or{" "}
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="font-semibold underline underline-offset-2">
+                open it again
+              </a>
+              ) so we don&apos;t miss your enquiry.
+            </p>
+          )}
         </div>
       )}
 

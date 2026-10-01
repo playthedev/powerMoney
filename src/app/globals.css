@@ -186,7 +186,7 @@ a, button, input, select, textarea { -webkit-tap-highlight-color: transparent; }
 .investor-faces { width: 24cqw; height: 4.5cqw; margin-top: .5cqw; }
 .reference-plans { height: 32.94cqw; background: #e9eff6; padding: 1.7cqw 3.33cqw 1.2cqw 4.31cqw; text-align: center; }
 .reference-plans h2 { font-size: 2.6cqw; line-height: 3.8cqw; font-weight: 600; }
-.reference-plan-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.05cqw; margin-top: .5cqw; }
+.reference-plan-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.05cqw; margin-top: .5cqw; }
 .reference-plan { height: 23.53cqw; padding: .8cqw 1.7cqw 1.2cqw; border: 1px solid #dfe5ec; border-radius: 1cqw; background: #f7f8fa; box-shadow: var(--shadow-card); }
 .plan-icon { display: flex; justify-content: center; align-items: center; width: 6.3cqw; height: 6.3cqw; border-radius: 50%; color: white; background: linear-gradient(#2b74b7,#1c5190); margin: 0 auto .3cqw; }
 .plan-icon svg { width: 3.7cqw; height: 3.7cqw; stroke-width: 1.2; }
