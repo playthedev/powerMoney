@@ -64,7 +64,7 @@ export default async function PlanDetailPage({
         </Link>
 
         <div className="mt-6 grid gap-10 lg:grid-cols-3">
-          <div className="lg:col-span-2">
+          <div className="min-w-0 lg:col-span-2">
             <div className="flex flex-wrap items-center gap-3">
               <h1 className="font-display text-2xl font-bold text-navy sm:text-3xl">
                 {plan.name}

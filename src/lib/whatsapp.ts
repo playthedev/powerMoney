@@ -3,7 +3,7 @@ import type { LeadFormValues } from "@/lib/schemas";
 // Business WhatsApp number that enquiry details are sent to (click-to-WhatsApp,
 // no API/credentials required). Kept distinct from the phone/call number shown
 // elsewhere on the site.
-export const WHATSAPP_BUSINESS_NUMBER = "918239794667";
+export const WHATSAPP_BUSINESS_NUMBER = "919999880667";
 
 export function buildLeadWhatsAppMessage(values: LeadFormValues): string {
   const lines = [
