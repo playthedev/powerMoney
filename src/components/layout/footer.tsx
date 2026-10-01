@@ -1,8 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, MapPin, Phone, ShieldCheck, HeartHandshake, Eye } from "lucide-react";
+import { MapPin, MessageCircle, Phone, ShieldCheck, HeartHandshake, Eye } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { footerNav } from "@/data/nav";
+import { WHATSAPP_BUSINESS_NUMBER } from "@/lib/whatsapp";
 import {
   FacebookIcon,
   InstagramIcon,
@@ -72,8 +73,15 @@ export function Footer() {
             </a>
           </div>
           <div className="flex items-center gap-2.5">
-            <Mail className="h-4 w-4 shrink-0 text-brand" />
-            support@powermoney.in
+            <MessageCircle className="h-4 w-4 shrink-0 text-brand" />
+            <a
+              href={`https://wa.me/${WHATSAPP_BUSINESS_NUMBER}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-colors hover:text-white"
+            >
+              WhatsApp us
+            </a>
           </div>
           <div className="flex items-center gap-2.5">
             <MapPin className="h-4 w-4 shrink-0 text-brand" />

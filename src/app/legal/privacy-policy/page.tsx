@@ -55,7 +55,7 @@ export default function PrivacyPolicyPage() {
           </h2>
           <p className="mt-2">
             For any privacy-related questions, reach us at
-            support@powermoney.in.
+            +91 99998 80667 (call or WhatsApp).
           </p>
         </div>
         <p className="text-xs text-foreground/40">

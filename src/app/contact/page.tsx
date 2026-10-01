@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { MapPin, MessageCircle, Phone } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
 import { Container } from "@/components/ui/container";
 import { Card } from "@/components/ui/card";
 import { LeadForm } from "@/components/forms/lead-form";
 import { plans } from "@/data/plans";
+import { WHATSAPP_BUSINESS_NUMBER } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -36,8 +37,13 @@ export default function ContactPage() {
             </p>
 
             <div className="mt-8 space-y-5">
-              <ContactRow icon={Phone} label="Call us" value="99998 80667" />
-              <ContactRow icon={Mail} label="Email us" value="support@powermoney.in" />
+              <ContactRow icon={Phone} label="Call us" value="99998 80667" href="tel:+919999880667" />
+              <ContactRow
+                icon={MessageCircle}
+                label="WhatsApp us"
+                value="99998 80667"
+                href={`https://wa.me/${WHATSAPP_BUSINESS_NUMBER}`}
+              />
               <ContactRow icon={MapPin} label="Visit us" value="HSR Layout, Bengaluru, India" />
             </div>
 
@@ -60,10 +66,12 @@ function ContactRow({
   icon: Icon,
   label,
   value,
+  href,
 }: {
   icon: React.ComponentType<{ className?: string }>;
   label: string;
   value: string;
+  href?: string;
 }) {
   return (
     <div className="flex items-start gap-3">
@@ -72,7 +80,13 @@ function ContactRow({
       </span>
       <div>
         <p className="text-xs text-foreground/45">{label}</p>
-        <p className="text-sm font-medium text-navy">{value}</p>
+        {href ? (
+          <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className="text-sm font-medium text-navy hover:text-brand">
+            {value}
+          </a>
+        ) : (
+          <p className="text-sm font-medium text-navy">{value}</p>
+        )}
       </div>
     </div>
   );

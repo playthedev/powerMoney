@@ -1,6 +1,7 @@
-import { ArrowRight, Headset, Mail, Phone } from "lucide-react";
+import { ArrowRight, Headset, MessageCircle, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
+import { WHATSAPP_BUSINESS_NUMBER } from "@/lib/whatsapp";
 
 export function HelpCtaBar() {
   return (
@@ -19,7 +20,7 @@ export function HelpCtaBar() {
           </div>
           <div className="relative flex min-w-fit flex-col gap-3 text-sm text-white/70">
             <a href="tel:+919999880667" className="flex items-center gap-2.5 transition-colors hover:text-white"><Phone className="h-4 w-4 shrink-0 text-accent" />99998 80667</a>
-            <a href="mailto:support@powermoney.in" className="flex items-center gap-2.5 transition-colors hover:text-white"><Mail className="h-4 w-4 shrink-0 text-accent" />support@powermoney.in</a>
+            <a href={`https://wa.me/${WHATSAPP_BUSINESS_NUMBER}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2.5 transition-colors hover:text-white"><MessageCircle className="h-4 w-4 shrink-0 text-accent" />WhatsApp us</a>
           </div>
         </div>
       </Container>

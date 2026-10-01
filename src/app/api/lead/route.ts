@@ -27,8 +27,11 @@ export async function POST(request: Request) {
   try {
     const result = await sendLeadEmail(parsed.data);
     if ('skipped' in result || result.error) {
+      // Not surfaced to the visitor — WhatsApp (triggered client-side before
+      // this request is even made) is the primary enquiry channel. This is
+      // only a best-effort internal record.
       return NextResponse.json(
-        { error: "Enquiries are temporarily unavailable. Please contact us by phone or email." },
+        { error: "Lead recording is temporarily unavailable." },
         { status: 503 }
       );
     }

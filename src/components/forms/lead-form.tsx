@@ -3,7 +3,7 @@
 import * as React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CheckCircle2, Loader2, TriangleAlert } from "lucide-react";
+import { CheckCircle2, Loader2 } from "lucide-react";
 import { leadFormSchema, type LeadFormValues } from "@/lib/schemas";
 import { buildLeadWhatsAppMessage, buildWhatsAppUrl } from "@/lib/whatsapp";
 import { Input, Select, Textarea } from "@/components/ui/input";
@@ -21,8 +21,7 @@ export function LeadForm({
   showMessage?: boolean;
 }) {
   const formId = React.useId();
-  const [status, setStatus] = React.useState<"idle" | "loading" | "success" | "error">("idle");
-  const [errorMessage, setErrorMessage] = React.useState("");
+  const [status, setStatus] = React.useState<"idle" | "loading" | "success">("idle");
   const [whatsappUrl, setWhatsappUrl] = React.useState<string | null>(null);
 
   const {
@@ -39,7 +38,6 @@ export function LeadForm({
 
   async function onSubmit(values: LeadFormValues) {
     setStatus("loading");
-    setErrorMessage("");
 
     // Open WhatsApp as the very first thing, synchronously, so browsers still
     // treat it as part of the user's click (not a blocked popup). It's a plain
@@ -51,24 +49,18 @@ export function LeadForm({
     setWhatsappUrl(url);
     window.open(url, "_blank", "noopener,noreferrer");
 
-    try {
-      const res = await fetch("/api/lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
-      });
+    // WhatsApp is the enquiry channel, so success doesn't wait on anything
+    // else. This is a best-effort background record for later (e.g. once an
+    // email/CRM integration is configured) — its outcome never blocks or
+    // shows up for the visitor.
+    fetch("/api/lead", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(values),
+    }).catch(() => {});
 
-      if (!res.ok) {
-        const data = await res.json().catch(() => null);
-        throw new Error(data?.error ?? "Something went wrong. Please try again.");
-      }
-
-      setStatus("success");
-      reset({ interest: defaultInterest ?? interestOptions?.[0] ?? "", name: "", email: "", phone: "", city: "", message: "", company: "" });
-    } catch (err) {
-      setStatus("error");
-      setErrorMessage(err instanceof Error ? err.message : "Something went wrong.");
-    }
+    setStatus("success");
+    reset({ interest: defaultInterest ?? interestOptions?.[0] ?? "", name: "", email: "", phone: "", city: "", message: "", company: "" });
   }
 
   if (status === "success") {
@@ -179,24 +171,6 @@ export function LeadForm({
             Message <span className="text-foreground/40">(optional)</span>
           </label>
           <Textarea rows={3} placeholder="Tell us a bit more…" id={`${formId}-message`} {...register("message")} />
-        </div>
-      )}
-
-      {status === "error" && (
-        <div role="alert" className="rounded-xl bg-danger-light px-4 py-3 text-sm text-danger">
-          <div className="flex items-start gap-2">
-            <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0" />
-            {errorMessage}
-          </div>
-          {whatsappUrl && (
-            <p className="mt-2 pl-6">
-              We&apos;ve still opened WhatsApp with your details — please hit send there (or{" "}
-              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="font-semibold underline underline-offset-2">
-                open it again
-              </a>
-              ) so we don&apos;t miss your enquiry.
-            </p>
-          )}
         </div>
       )}
 
